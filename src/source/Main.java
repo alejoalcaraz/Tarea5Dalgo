@@ -6,6 +6,8 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.Scanner;
 
+import Parte2.BFS;
+
 public class Main {
 	
 	public final static String pathDatos0 = "./data/distances5.txt";
@@ -17,6 +19,8 @@ public class Main {
 	private static int[][] matriz;
 	
 	private static Dijkstra dijkstra;
+	
+	private static BFS bfs;
 	
 	public Main()
 	{
@@ -57,11 +61,15 @@ public class Main {
 		{
 			dijkstra = new Dijkstra(matriz);
 		}
+		else if ( tipo == 3) {
+			bfs = new BFS(matriz);
+			System.out.println(bfs.getGrupos());
+		}
 	}
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("------- Punto 1 Dalgo -------");
-		System.out.println("A continuación elija el archivo del grafo que desea cargar: "
+		System.out.println("A continuaciï¿½n elija el archivo del grafo que desea cargar: "
 				+ "\n	0: distances5"
 				+ "\n	1: distances100"
 				+ "\n	2: distances1000_202110"
@@ -75,10 +83,12 @@ public class Main {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println("A continuación elija el algoritmo "
+		System.out.println("A continuaciï¿½n elija el algoritmo "
 				+ "\n	0: Dijkstra"
 				+ "\n	1: Bellman Ford"
-				+ "\n	2: Floyd Warshall");
+				+ "\n	2: Floyd Warshall"
+				+ "\n   3: BFS"
+				+ "\n   4: DFS");
 		int y = sc.nextInt();
 		correrAlgoritmo(y);
 
