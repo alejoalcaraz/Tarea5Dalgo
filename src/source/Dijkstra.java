@@ -7,7 +7,7 @@ public class Dijkstra {
 
 
 
-	private int[] predecesor;
+	private Integer[] predecesor;
 
 	private double[] distTo;
 
@@ -51,9 +51,20 @@ public class Dijkstra {
 	public double dijkstra(int inicio)
 	{
 		minPQ = new IndexMinPQ<>(numVertices);
-		minPQ.insert(inicio, 0.0);
+		for (int v = 0; v < numVertices; v++)
+            distTo[v] = Double.POSITIVE_INFINITY;
+		distTo[inicio] = 0.0;
+		minPQ.insert(inicio, distTo[inicio]);
 		boolean[] visitados = new boolean[numVertices];
 		predecesor = new Integer[numVertices];
+		
+		
+		while(!minPQ.isEmpty())
+		{
+			int idNodo = minPQ.delMin();
+			visitados[idNodo] = true;
+			double minimo = minPQ.minKey();
+		}
 	}
 
 

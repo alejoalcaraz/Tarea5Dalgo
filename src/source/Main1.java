@@ -7,7 +7,7 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Main {
+public class Main1 {
 	
 	public final static String pathDatos0 = "./data/distances5.txt";
 	public final static String pathDatos1 = "./data/distances100.txt";
