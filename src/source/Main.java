@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
@@ -17,6 +18,8 @@ public class Main {
 	private static int[][] matriz;
 	
 	private static Dijkstra dijkstra;
+	
+	private static int numVertices;
 	
 	public Main()
 	{
@@ -48,6 +51,8 @@ public class Main {
 			i++;
 			linea = br.readLine();
 		}
+		numVertices=tamRow;
+		
 		System.out.println(matriz[tamRow-2][tamCol-1]);
 	}
 	
@@ -55,7 +60,7 @@ public class Main {
 	{
 		if(tipo==0)
 		{
-			dijkstra = new Dijkstra(matriz);
+			dijkstra = new Dijkstra(matriz, numVertices);
 		}
 	}
 	public static void main(String[] args) {
