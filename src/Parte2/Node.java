@@ -10,6 +10,8 @@ import java.util.ArrayList;
  *
  */
 public class Node {
+	
+	public int nombre;
 
 	private boolean visitado;
 	
@@ -22,10 +24,18 @@ public class Node {
 	 * @param adyacentes
 	 * @param grupo
 	 */
-	public Node() {
+	public Node(int nombre) {
+		this.nombre = nombre;
 		adyacentes = new ArrayList<Node>();
 		this.visitado = false;
 		this.grupo = -1;
+	}
+
+	/**
+	 * @return the nombre
+	 */
+	public int getNombre() {
+		return nombre;
 	}
 
 	/**
@@ -58,6 +68,15 @@ public class Node {
 	 */
 	public void setGrupo(int grupo) {
 		this.grupo = grupo;
+	}
+	
+	
+
+	/**
+	 * @return the adyacentes
+	 */
+	public ArrayList<Node> getAdyacentes() {
+		return adyacentes;
 	}
 
 	public void bfs(int i) {
