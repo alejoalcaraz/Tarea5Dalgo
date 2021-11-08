@@ -23,12 +23,6 @@ public class BFS {
 		correrBFS();
 		
 	}
-
-	
-
-	
-
-	
 	private void correrBFS() {
 		LinkedList<Node> queue = new LinkedList<Node>();
 		for (Node node: nodes) {

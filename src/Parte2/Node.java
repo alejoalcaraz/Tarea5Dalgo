@@ -4,6 +4,7 @@
 package Parte2;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 /**
  * @author Gabriel
@@ -11,7 +12,7 @@ import java.util.ArrayList;
  */
 public class Node {
 	
-	public int nombre;
+	private int nombre;
 
 	private boolean visitado;
 	
@@ -29,6 +30,23 @@ public class Node {
 		adyacentes = new ArrayList<Node>();
 		this.visitado = false;
 		this.grupo = -1;
+	}
+	
+	public boolean DFScycle (LinkedList<Node> orden) {
+		boolean respuesta = false;
+		orden.add(this);
+		visitado = true;
+		for (Node node : adyacentes) {
+			if(node.isVisitado()) {
+				
+				return true;
+			}
+			else {
+				respuesta = node.DFScycle(orden);
+				int a = 0;
+			}
+		}
+		return respuesta;
 	}
 
 	/**
@@ -79,16 +97,7 @@ public class Node {
 		return adyacentes;
 	}
 
-	public void bfs(int i) {
-		setVisitado(true);
-		setGrupo(i);
-		for (Node node : adyacentes) {
-			if(!node.isVisitado()) {
-				node.bfs(i);
-			}
-		}
-		
-	}
+	
 	
 	
 	

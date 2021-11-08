@@ -11,6 +11,7 @@ import java.util.Scanner;
 
 
 import Parte2.BFS;
+import Parte3.DFS;
 
 public class Main {
 
@@ -29,6 +30,8 @@ public class Main {
 	private static int numVertices;
 
 	private static BFS bfs;
+	
+	private static DFS dfs;
 
 	
 	public Main()
@@ -75,6 +78,16 @@ public class Main {
 		else if ( tipo == 3) {
 			bfs = new BFS(matriz);
 			System.out.println(bfs.getGrupos());
+		}
+		else if ( tipo == 4) {
+			dfs = new DFS(matriz);
+			if(dfs.tieneCiclos()) {
+				System.out.println("Tiene ciclos");
+			}
+			else {
+				System.out.println(dfs.getOrden());
+			}
+			
 		}
 	}
 	public static void main(String[] args) {
