@@ -12,6 +12,7 @@ import java.util.Scanner;
 
 import Parte2.BFS;
 import Parte3.DFS;
+import Parte4.SixDegreesOfSeparation;
 
 public class Main {
 
@@ -32,6 +33,8 @@ public class Main {
 	private static BFS bfs;
 	
 	private static DFS dfs;
+	
+	private static SixDegreesOfSeparation sdos;
 
 	
 	public Main()
@@ -89,6 +92,10 @@ public class Main {
 			}
 			
 		}
+		else if ( tipo == 5) {
+			sdos = new SixDegreesOfSeparation(matriz);
+			System.out.println(sdos.cumple());
+		}
 	}
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
@@ -111,8 +118,9 @@ public class Main {
 				+ "\n	0: Dijkstra"
 				+ "\n	1: Bellman Ford"
 				+ "\n	2: Floyd Warshall"
-				+ "\n   3: BFS"
-				+ "\n   4: DFS");
+				+ "\n	3: BFS"
+				+ "\n	4: DFS"
+				+ "\n	5: SDoS");
 		int y = sc.nextInt();
 		correrAlgoritmo(y);
 

@@ -97,6 +97,18 @@ public class Node {
 		return adyacentes;
 	}
 
+	public int SDoS(int degree) {
+		visitado = true;
+		int maxDegree = degree;
+		int ady = degree + 1;
+		for (Node node : adyacentes) {
+			if(!node.isVisitado() && ady <= 6) {
+				maxDegree = node.SDoS(ady);
+			}
+		}
+		return maxDegree;
+	}
+
 	
 	
 	
