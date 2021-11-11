@@ -98,6 +98,7 @@ public class Main {
 		}
 	}
 	public static void main(String[] args) {
+		System.out.println("");
 		Scanner sc = new Scanner(System.in);
 		System.out.println("------- Punto 1 Dalgo -------");
 		System.out.println("A continuaci�n elija el archivo del grafo que desea cargar: "
