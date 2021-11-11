@@ -39,8 +39,9 @@ public class Node {
 		for (Node node : adyacentes) {
 			if(!respuesta) {
 				if(node.isVisitado()) {
+					respuesta = esCiclo(node);
+					return respuesta;
 					
-					return true;
 				}
 				else {
 					respuesta = node.DFScycle(orden);
@@ -49,6 +50,22 @@ public class Node {
 			}
 		}
 		return respuesta;
+	}
+
+	private boolean esCiclo(Node root) {
+		boolean ciclo = false;
+		for (Node node : adyacentes) {
+			if(!ciclo) {
+				if(node.equals(root)) {
+					ciclo = true;
+				}
+				else {
+					node.esCiclo(root);
+				}
+			}
+		}
+		return ciclo;
+		
 	}
 
 	/**
