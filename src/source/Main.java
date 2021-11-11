@@ -99,10 +99,7 @@ public class Main {
 			}
 
 		}
-		else if ( tipo == 5) {
-			sdos = new SixDegreesOfSeparation(matriz);
-			System.out.println(sdos.cumple());
-		}
+		
 	}
 	public static void main(String[] args) {
 		System.out.println("");
@@ -127,8 +124,7 @@ public class Main {
 				+ "\n	1: Bellman Ford"
 				+ "\n	2: Floyd Warshall"
 				+ "\n	3: BFS"
-				+ "\n	4: DFS"
-				+ "\n	5: SDoS");
+				+ "\n	4: DFS");
 		int y = sc.nextInt();
 		correrAlgoritmo(y);
 
