@@ -14,6 +14,7 @@ public class SixDegreesOfSeparation {
 		nodes = new Node[matriz.length];
 		constuirGrafo(matriz);
 		correrSDoS();
+		int a = 0;
 		
 
 
@@ -21,7 +22,6 @@ public class SixDegreesOfSeparation {
 	
 	private void correrSDoS() {
 		int cont = 0;
-		int maxDegree = 0;
 		for (Node node : nodes) {
 			if(!node.isVisitado() && cumple) {
 				cont ++;

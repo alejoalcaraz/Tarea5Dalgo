@@ -37,13 +37,15 @@ public class Node {
 		orden.add(this);
 		visitado = true;
 		for (Node node : adyacentes) {
-			if(node.isVisitado()) {
-				
-				return true;
-			}
-			else {
-				respuesta = node.DFScycle(orden);
-				int a = 0;
+			if(!respuesta) {
+				if(node.isVisitado()) {
+					
+					return true;
+				}
+				else {
+					respuesta = node.DFScycle(orden);
+					int a = 0;
+				}
 			}
 		}
 		return respuesta;
@@ -97,16 +99,15 @@ public class Node {
 		return adyacentes;
 	}
 
-	public int SDoS(int degree) {
+	public void SDoS(int degree) {
 		visitado = true;
 		int maxDegree = degree;
 		int ady = degree + 1;
 		for (Node node : adyacentes) {
 			if(!node.isVisitado() && ady <= 6) {
-				maxDegree = node.SDoS(ady);
+				node.SDoS(ady);
 			}
 		}
-		return maxDegree;
 	}
 
 	
