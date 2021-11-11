@@ -16,40 +16,43 @@ import Parte4.SixDegreesOfSeparation;
 
 public class Main {
 
-	
+
 	public final static String pathDatos0 = "./data/distances5.txt";
 	public final static String pathDatos1 = "./data/distances100.txt";
 	public final static String pathDatos2 = "./data/distances1000_202110.txt";
 	public final static String pathDatos3 = "./data/distancesDisconnected.txt";
-	
-	
+
+
 	private static int[][] matriz;
-	
+
 	private static Dijkstra dijkstra;
-	
+
+	private static BellmanFord bellmanFord;
+
+	private static FloydWarshall floydWarshall;
 
 	private static int numVertices;
 
 	private static BFS bfs;
-	
+
 	private static DFS dfs;
-	
+
 	private static SixDegreesOfSeparation sdos;
 
-	
+
 	public Main()
 	{
-		
+
 	}
 
-	
+
 	public static void cargarDatos(String path) throws Exception {
-		
-		
+
+
 		String pathDatos = path;
 		File file = new File(pathDatos);
 		BufferedReader br = new BufferedReader(new FileReader(file));
-		
+
 		String linea = br.readLine();
 		String[] temp = linea.split("\t");
 		int tamRow = temp.length;
@@ -58,7 +61,7 @@ public class Main {
 		int i = 0;
 		while(linea != null)
 		{
-			
+
 			temp  = linea.split("\t");
 			for(int j = 0 ;j<tamCol; j++)
 			{
@@ -68,15 +71,19 @@ public class Main {
 			linea = br.readLine();
 		}
 		numVertices=tamRow;
-		
-		System.out.println(matriz[tamRow-2][tamCol-1]);
 	}
-	
+
 	public static void correrAlgoritmo(int tipo)
 	{
 		if(tipo==0)
 		{
 			dijkstra = new Dijkstra(matriz, numVertices);
+		}
+		else if ( tipo == 1) {
+			bellmanFord = new BellmanFord(matriz, numVertices);
+		}
+		else if ( tipo == 2) {
+			floydWarshall = new FloydWarshall(matriz, numVertices);
 		}
 		else if ( tipo == 3) {
 			bfs = new BFS(matriz);
@@ -90,7 +97,7 @@ public class Main {
 			else {
 				System.out.println(dfs.getOrden());
 			}
-			
+
 		}
 		else if ( tipo == 5) {
 			sdos = new SixDegreesOfSeparation(matriz);
@@ -101,7 +108,7 @@ public class Main {
 		System.out.println("");
 		Scanner sc = new Scanner(System.in);
 		System.out.println("------- Punto 1 Dalgo -------");
-		System.out.println("A continuaci�n elija el archivo del grafo que desea cargar: "
+		System.out.println("A continuacion elija el archivo del grafo que desea cargar: "
 				+ "\n	0: distances5"
 				+ "\n	1: distances100"
 				+ "\n	2: distances1000_202110"
@@ -110,12 +117,12 @@ public class Main {
 		String pathDatos = ((p==0)?pathDatos0:(p==1)?pathDatos1:(p==2)?pathDatos2:pathDatos3);
 		try {
 			cargarDatos(pathDatos);
-			
+
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println("A continuaci�n elija el algoritmo "
+		System.out.println("A continuacion elija el algoritmo "
 				+ "\n	0: Dijkstra"
 				+ "\n	1: Bellman Ford"
 				+ "\n	2: Floyd Warshall"
